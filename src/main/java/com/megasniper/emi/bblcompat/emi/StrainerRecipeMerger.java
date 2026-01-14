@@ -11,7 +11,7 @@ import java.util.*;
 public class StrainerRecipeMerger {
     
     public static List<StrainerEmiRecipe> mergeRecipes(List<RecipeHolder<?>> recipes) {
-        Map<String, StrainerEmiRecipe> merged = new HashMap<>();
+        List<StrainerEmiRecipe> result = new ArrayList<>();
         
         for (RecipeHolder<?> holder : recipes) {
             Object recipe = holder.value();
@@ -27,7 +27,7 @@ public class StrainerRecipeMerger {
                 @SuppressWarnings("unchecked")
                 List<Object> rollResults = (List<Object>) getRollResultsMethod.invoke(recipe);
                 
-                // Group results by mesh type
+                // Group results by mesh type within THIS recipe only
                 Map<String, List<Object>> resultsByMesh = new HashMap<>();
                 Map<String, Ingredient> meshIngredients = new HashMap<>();
                 
@@ -43,38 +43,26 @@ public class StrainerRecipeMerger {
                     meshIngredients.putIfAbsent(meshKey, mesh);
                 }
                 
-                // Create one recipe display per input+mesh+block combination
+                // Create one display per mesh for THIS recipe (don't merge across recipes)
+                int meshIndex = 0;
                 for (Map.Entry<String, List<Object>> entry : resultsByMesh.entrySet()) {
                     Ingredient mesh = meshIngredients.get(entry.getKey());
                     List<Object> chanceResults = entry.getValue();
                     
-                    // Create unique key: input + blockAbove + mesh
-                    String key = input.toString() + "|" + 
-                                aboveBlock.toString() + "|" + 
-                                entry.getKey();
+                    // Create unique ID for this mesh variant
+                    ResourceLocation recipeId = ResourceLocation.fromNamespaceAndPath(
+                        holder.id().getNamespace(),
+                        holder.id().getPath() + (meshIndex > 0 ? "_mesh_" + meshIndex : "")
+                    );
+                    meshIndex++;
                     
-                    merged.compute(key, (k, existing) -> {
-                        if (existing == null) {
-                            return new StrainerEmiRecipe(
-                                holder.id(),
-                                aboveBlock,
-                                input,
-                                mesh,
-                                chanceResults
-                            );
-                        } else {
-                            // Merge outputs if we already have this combination
-                            List<Object> combined = new ArrayList<>(existing.getChanceResults());
-                            combined.addAll(chanceResults);
-                            return new StrainerEmiRecipe(
-                                existing.getId(),
-                                existing.getAboveBlock(),
-                                existing.getInput(),
-                                existing.getMesh(),
-                                combined
-                            );
-                        }
-                    });
+                    result.add(new StrainerEmiRecipe(
+                        recipeId,
+                        aboveBlock,
+                        input,
+                        mesh,
+                        chanceResults
+                    ));
                 }
             } catch (Exception e) {
                 // Log and continue if reflection fails
@@ -82,6 +70,6 @@ public class StrainerRecipeMerger {
             }
         }
         
-        return new ArrayList<>(merged.values());
+        return result;
     }
 }
