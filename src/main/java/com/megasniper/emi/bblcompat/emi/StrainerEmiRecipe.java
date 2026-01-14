@@ -47,7 +47,9 @@ public class StrainerEmiRecipe implements EmiRecipe {
                 Method stackMethod = chanceResult.getClass().getMethod("stack");
                 ItemStack stack = (ItemStack) stackMethod.invoke(chanceResult);
                 if (!stack.isEmpty()) {
-                    outputs.add(EmiStack.of(stack));
+                    // Create EmiStack with the count from the ItemStack
+                    EmiStack emiStack = EmiStack.of(stack.getItem(), stack.getCount());
+                    outputs.add(emiStack);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -98,7 +100,10 @@ public class StrainerEmiRecipe implements EmiRecipe {
 
     @Override
     public int getDisplayHeight() {
-        return 56;
+        // Calculate dynamic height based on number of outputs
+        // Each row is 18 pixels, with minimum of 56
+        int rows = (int) Math.ceil(outputs.size() / 5.0);
+        return Math.max(56, rows * 18 + 3); // +3 for top padding
     }
 
     @Override
@@ -138,9 +143,13 @@ public class StrainerEmiRecipe implements EmiRecipe {
             int x = outputX + (col * 18);
             int y = outputY + (row * 18);
             
-            widgets.addSlot(output, x, y)
-                .recipeContext(this)
-                .appendTooltip(getChanceTooltip(chanceResult));
+            var slot = widgets.addSlot(output, x, y).recipeContext(this);
+            
+            // Add chance tooltip
+            Component chanceTooltip = getChanceTooltip(chanceResult);
+            if (chanceTooltip != Component.empty()) {
+                slot.appendTooltip(chanceTooltip);
+            }
             
             col++;
             if (col >= 5) {
@@ -157,7 +166,7 @@ public class StrainerEmiRecipe implements EmiRecipe {
             int asPercent = Math.round(chance * 100);
             
             if (asPercent < 100) {
-                return Component.translatable("emi.chance", asPercent + "%")
+                return Component.literal(asPercent + "% Chance")
                     .withStyle(ChatFormatting.GOLD);
             }
         } catch (Exception e) {
