@@ -1,5 +1,6 @@
 package com.megasniper.emi.bblcompat.emi;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeHolder;
 import net.minecraft.world.level.block.state.BlockState;
@@ -26,30 +27,54 @@ public class StrainerRecipeMerger {
                 @SuppressWarnings("unchecked")
                 List<Object> rollResults = (List<Object>) getRollResultsMethod.invoke(recipe);
                 
-                // Get first mesh from results for this recipe
-                if (!rollResults.isEmpty()) {
-                    Object firstMeshResult = rollResults.get(0);
-                    Method meshMethod = firstMeshResult.getClass().getMethod("mesh");
-                    Ingredient mesh = (Ingredient) meshMethod.invoke(firstMeshResult);
+                // Group results by mesh type
+                Map<String, List<Object>> resultsByMesh = new HashMap<>();
+                Map<String, Ingredient> meshIngredients = new HashMap<>();
+                
+                for (Object meshChanceResult : rollResults) {
+                    Method meshMethod = meshChanceResult.getClass().getMethod("mesh");
+                    Method chanceResultMethod = meshChanceResult.getClass().getMethod("chanceResult");
                     
-                    // Collect all chance results from this recipe
-                    List<Object> chanceResults = new ArrayList<>();
-                    for (Object meshChanceResult : rollResults) {
-                        Method chanceResultMethod = meshChanceResult.getClass().getMethod("chanceResult");
-                        Object chanceResult = chanceResultMethod.invoke(meshChanceResult);
-                        chanceResults.add(chanceResult);
-                    }
+                    Ingredient mesh = (Ingredient) meshMethod.invoke(meshChanceResult);
+                    Object chanceResult = chanceResultMethod.invoke(meshChanceResult);
                     
-                    // Create unique key per recipe (don't merge different recipes)
-                    String key = holder.id().toString();
+                    String meshKey = mesh.toString();
+                    resultsByMesh.computeIfAbsent(meshKey, k -> new ArrayList<>()).add(chanceResult);
+                    meshIngredients.putIfAbsent(meshKey, mesh);
+                }
+                
+                // Create one recipe display per input+mesh+block combination
+                for (Map.Entry<String, List<Object>> entry : resultsByMesh.entrySet()) {
+                    Ingredient mesh = meshIngredients.get(entry.getKey());
+                    List<Object> chanceResults = entry.getValue();
                     
-                    merged.put(key, new StrainerEmiRecipe(
-                        holder.id(),
-                        aboveBlock,
-                        input,
-                        mesh,
-                        chanceResults
-                    ));
+                    // Create unique key: input + blockAbove + mesh
+                    String key = input.toString() + "|" + 
+                                aboveBlock.toString() + "|" + 
+                                entry.getKey();
+                    
+                    merged.compute(key, (k, existing) -> {
+                        if (existing == null) {
+                            return new StrainerEmiRecipe(
+                                holder.id(),
+                                aboveBlock,
+                                input,
+                                mesh,
+                                chanceResults
+                            );
+                        } else {
+                            // Merge outputs if we already have this combination
+                            List<Object> combined = new ArrayList<>(existing.getChanceResults());
+                            combined.addAll(chanceResults);
+                            return new StrainerEmiRecipe(
+                                existing.getId(),
+                                existing.getAboveBlock(),
+                                existing.getInput(),
+                                existing.getMesh(),
+                                combined
+                            );
+                        }
+                    });
                 }
             } catch (Exception e) {
                 // Log and continue if reflection fails
