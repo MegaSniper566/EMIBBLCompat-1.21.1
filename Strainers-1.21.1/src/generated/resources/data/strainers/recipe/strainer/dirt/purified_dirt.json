@@ -1,0 +1,108 @@
+{
+  "type": "strainers:strainer",
+  "above_block": {
+    "Name": "strainers:purifying_water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "input": {
+    "tag": "minecraft:dirt"
+  },
+  "results": [
+    {
+      "chance": 0.8,
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_1_meshes"
+      }
+    },
+    {
+      "chance": 0.85,
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_2_meshes"
+      }
+    },
+    {
+      "chance": 0.9,
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_3_meshes"
+      }
+    },
+    {
+      "chance": 0.95,
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_4_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_5_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_6_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_7_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_8_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_9_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "strainers:purified_dirt"
+      },
+      "mesh": {
+        "tag": "strainers:tier_10_meshes"
+      }
+    }
+  ]
+}

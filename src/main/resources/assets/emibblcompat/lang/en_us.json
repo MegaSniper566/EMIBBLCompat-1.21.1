@@ -1,0 +1,16 @@
+{
+  "itemGroup.emibblcompat": "Example Mod Tab",
+  "block.emibblcompat.example_block": "Example Block",
+  "item.emibblcompat.example_item": "Example Item",
+
+  "emibblcompat.configuration.title": "EMI BBL Compat Configs",
+  "emibblcompat.configuration.section.emibblcompat.common.toml": "EMI BBL Compat Configs",
+  "emibblcompat.configuration.section.emibblcompat.common.toml.title": "EMI BBL Compat Configs",
+  "emibblcompat.configuration.items": "Item List",
+  "emibblcompat.configuration.logDirtBlock": "Log Dirt Block",
+  "emibblcompat.configuration.magicNumberIntroduction": "Magic Number Text",
+  "emibblcompat.configuration.magicNumber": "Magic Number",
+  
+  "category.emibblcompat.strainer": "Strainers",
+  "category.emibblcompat.strainer.required_fluid": "Required Fluid"
+}

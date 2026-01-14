@@ -1,0 +1,74 @@
+{
+  "type": "strainers:strainer",
+  "above_block": {
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "input": {
+    "item": "strainers:purified_soul_sand"
+  },
+  "results": [
+    {
+      "chance": 0.4,
+      "item": {
+        "count": 1,
+        "id": "minecraft:blaze_powder"
+      },
+      "mesh": {
+        "tag": "strainers:tier_5_meshes"
+      }
+    },
+    {
+      "chance": 0.45,
+      "item": {
+        "count": 1,
+        "id": "minecraft:blaze_powder"
+      },
+      "mesh": {
+        "tag": "strainers:tier_6_meshes"
+      }
+    },
+    {
+      "chance": 0.5,
+      "item": {
+        "count": 1,
+        "id": "minecraft:blaze_powder"
+      },
+      "mesh": {
+        "tag": "strainers:tier_7_meshes"
+      }
+    },
+    {
+      "chance": 0.55,
+      "item": {
+        "count": 1,
+        "id": "minecraft:blaze_powder"
+      },
+      "mesh": {
+        "tag": "strainers:tier_8_meshes"
+      }
+    },
+    {
+      "chance": 0.6,
+      "item": {
+        "count": 1,
+        "id": "minecraft:blaze_powder"
+      },
+      "mesh": {
+        "tag": "strainers:tier_9_meshes"
+      }
+    },
+    {
+      "chance": 0.65,
+      "item": {
+        "count": 1,
+        "id": "minecraft:blaze_powder"
+      },
+      "mesh": {
+        "tag": "strainers:tier_10_meshes"
+      }
+    }
+  ]
+}

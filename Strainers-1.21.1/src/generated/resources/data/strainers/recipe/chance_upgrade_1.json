@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "strainers",
+  "key": {
+    "M": {
+      "tag": "strainers:tier_2_meshes"
+    },
+    "U": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    " M ",
+    "MUM",
+    " M "
+  ],
+  "result": {
+    "count": 1,
+    "id": "strainers:chance_upgrade_1"
+  }
+}

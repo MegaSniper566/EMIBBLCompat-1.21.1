@@ -1,0 +1,54 @@
+{
+  "type": "strainers:strainer",
+  "above_block": {
+    "Name": "strainers:eroding_water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "input": {
+    "item": "strainers:purified_stone"
+  },
+  "results": [
+    {
+      "chance": 0.05,
+      "item": {
+        "count": 1,
+        "id": "minecraft:deepslate"
+      },
+      "mesh": {
+        "tag": "strainers:tier_7_meshes"
+      }
+    },
+    {
+      "chance": 0.1,
+      "item": {
+        "count": 1,
+        "id": "minecraft:deepslate"
+      },
+      "mesh": {
+        "tag": "strainers:tier_8_meshes"
+      }
+    },
+    {
+      "chance": 0.15,
+      "item": {
+        "count": 1,
+        "id": "minecraft:deepslate"
+      },
+      "mesh": {
+        "tag": "strainers:tier_9_meshes"
+      }
+    },
+    {
+      "chance": 0.2,
+      "item": {
+        "count": 1,
+        "id": "minecraft:deepslate"
+      },
+      "mesh": {
+        "tag": "strainers:tier_10_meshes"
+      }
+    }
+  ]
+}

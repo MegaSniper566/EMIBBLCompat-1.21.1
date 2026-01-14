@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "strainers",
+  "key": {
+    "B": {
+      "item": "minecraft:breeze_rod"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "SBS",
+    "BBB",
+    "SBS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "strainers:breeze_mesh"
+  }
+}

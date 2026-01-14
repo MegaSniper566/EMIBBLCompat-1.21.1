@@ -1,0 +1,1 @@
+com.benbenlaw.strainers.integration.kubejs.KubeJSStrainersPlugin

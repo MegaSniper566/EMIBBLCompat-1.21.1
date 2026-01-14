@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "strainers",
+  "key": {
+    "M": {
+      "item": "strainers:mulch"
+    },
+    "S": {
+      "item": "minecraft:charcoal"
+    }
+  },
+  "pattern": [
+    "SSS",
+    "SMS",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "strainers:eroding_salt_mulch"
+  }
+}

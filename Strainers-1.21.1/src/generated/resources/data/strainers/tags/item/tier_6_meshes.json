@@ -1,0 +1,9 @@
+{
+  "values": [
+    "strainers:gold_mesh",
+    "strainers:redstone_mesh",
+    "strainers:echo_mesh",
+    "strainers:blaze_mesh",
+    "strainers:breeze_mesh"
+  ]
+}

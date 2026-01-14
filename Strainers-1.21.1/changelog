@@ -1,0 +1,550 @@
+Changelog BBL Strainers
+
+//********** UPDATE VERSION IN GRADLE PROPERTIES WHEN CHANGING THIS **********//
+//MAKE AIR VALID
+//FIX JEI ISSUES WHEN BLOCKS ARE USED INSTEAD OF FLUIDS
+
+5.2.2
+- Strainer now adds to stacks before creating a new stack in output slots
+
+5.2.1
+- Updated compactor texture
+
+5.2.0
+- Versions no longer marked as alphas, rewrite is complete
+- Added "strainers:not_consumed" item tag, items in this tag will not be consumed when used in a strainer recipe
+- JEI now also shows this information in recipes
+- Added empty "strainers:not_consumed" tag to allow pack makers to add items to this tag
+
+5.1.7
+Fixed leaf pile recipe causing error in KubeJS
+Updated to In World Recipes 1.5.9
+
+5.1.6
+Tweaked compactor itemhandler to fill a fit better to prevent the same item being in multiple slots
+
+5.1.5
+Added Compactor, compacts 2x2 and 3x3 crafting recipes
+
+5.1.3
+Tooltips now the correct color, updated tooltips to make more sense
+Slots now only accept the correct items
+Fixed Purified Stone texture
+Added Leaf Pile texture
+Added leaf pile to composter
+Added mulch to composter
+Duration now shows in JEI
+Fixed JEI not rendering blocks
+Recipe tweaks;
+    Added Rare Clay drop from purified dirt
+    Reduced sapling chances to 0.1 from 0.5
+    Reduced most drops from purified sand to 0.1 from 0.4
+    Reduced strings from leaves to 0.05 from 0.4
+    Added mulch to dirt recipe in purifying water
+    Mulch to dirt crafting recipe now makes 2 dirt
+    Added Melon and Pumpkin seeds to purified dirt
+    Added Beetroot seeds to purified dirt
+    Added Carrot and Potato to purified dirt
+    Added Sweet Berries to purified dirt
+    Removed Bamboo from purified dirt
+
+
+5.1.2
+Updated config defaults
+
+5.1.1
+Fixed purified soul sand recipe
+
+5.1.0 (ALPHA)
+Remove old upgrades
+Added Chance Upgrades 1-3 increases the chance of items by 0.5, 1.0 and 1.5
+Added Speed Upgrades 1-3 reduces the max duration by 50, 100, and 150, min is 20
+These values are config driven
+Upgrade slots now only accept one item
+
+5.0.4 (ALPHA)
+Added Leaf Pile
+Leaf Pile drops from leaves when hit with a sword
+Updated NeoForge to 21.1.203
+Changed mulch recipe
+Changed Creative Tab item registry to use deferred register
+Leaf Pile craft into mulch 4 mulch can be crafted into a dirt
+Removed Stone Pebble from Leaves
+Increased Stone Pebble from Dirt to 4 instead of 3 add another rarer drop of 4 as well
+Added Leaf Pile from Leaves recipe in strainers
+
+5.0.3 (ALPHA)
+Mod uploads now set the environment to both server and client
+Strainer tank now works again
+Update Yuki Textures for purified blocks and Blazing Salt Mulch
+Added Purified Soul Soil and Purified Stone
+Added more recipes for stone types and nether crops as well as some other stuff from sand
+
+5.0.2 (ALPHA)
+Added Pebble from leaves recipe
+Fixed string mesh recipe
+Fixed Cobblestone to Gravel recipe
+Fixed Gravel to Sand recipe
+Fixed rendering of blocks to actually show the block being proces
+Removed Ore Blocks
+Added Tag Output recipe for shaped crafting this means if there is a ore of a ore piece in game the recipes will load and ore pieces will make that ore
+Ore piece recipe now use conditional in there recipe and will only load if that ore is present in the world
+Moved silver or piece to tier 5 to match gold
+Tweaked JEI recipe ordering to show lowest to highest
+Removed JEI Information category not needed now as using In World Recipes
+Converted Separate Mulch items into a single MulchItem class with translation key for information
+Changed Lava recipe to use the new Blazing Salt Mulch item
+Updated to In World Recipes 1.5.6
+Updated In World Strainer Recipes to Block Interaction recipe as is new standard for In World Recipes
+Moved to core tooltips, Max Damage is now a translation key
+Tweaked some recipe dependencies
+Added Soul Sand to Purified Soul Sand
+
+5.0.1 (ALPHA)
+Added a lot more recipes
+Added missing purified blocks to JEI and creative menu
+Saplings come from purified dirt
+Added Ore Blocks for all strainer ore pieces , needs ore tags
+Added translations, model, blockstate and texture files for all blocks and items
+Changed mesh tiers again, tier 1 to 8 have most items and blocks for vanilla, tier 9 and 10 can be used in compat for addition mod support eg draconic evolution
+Changed mesh tags as well
+Tweaked recipes for resource based on the new mesh tiers
+Changed Strainer GUI again now a lot bigger for more recipe outputs
+
+5.0.0 (ALPHA)
+Reworked the recipe system again, single json per resource generated, eg straining dirt for seeds to get wheat the json contains all the information for tiers
+    as well as the chances using the new MeshChanceOutput system.
+Any recipes that have the same input, mesh inside a MeshChanceOutput and the same aboveBlock will be grouped together in JEI and in the block entity, this allows
+    for a single input to have multiple outputs across multiple tiers and multiple recipe jsons
+Removed all recipe systems used for upgrades
+S
+
+4.0.0
+Strainer recipe structure completely changed
+Block above is now BlockState not a string allowing for more complex recipes and more specific blocks to be used
+Duration can now be set in the config file per block above, default is 220 but this can be changed to any number
+Also added config to set specific ingredient durations, this will override the default duration
+Example of the config line;
+    "Block Durations" = ["minecraft:cherry_leaves=1000"]
+    "Block Durations" = ["minecraft:planks=200"]
+Expanded from 6 mesh tiers to 10 mesh tiers, meshes tiers now changed to the new system
+Fluids now render correctly
+Various recipes changed
+Removed ore mulch
+Added Purified Gravel, Sand and Dirt
+
+3.0.0
+Removed Opolis Utilities as a dependency
+If Opolis Utilities is installed all speed blocks will continue to work as normal
+Added BBL Core as a dependency
+Moved all previous Opolis Utilities class to BBL Core
+Fluids now use BBL Core fluid registry
+Fluids now tint correctly when underwater
+Removed Diamond and Emerald items being used as upgrades
+Added missing meshes to JEI including missing recipes
+Added Mesh Upgrades (1-3), follow the same recipe system the cloches uses but slots are still specific to one type of upgrade
+Added Output Upgrades (1-3), follow the same recipe system the cloches uses but slots are still specific to one type of upgrade
+Output upgrades now show there effect better in the strainer screen
+Updated changelog to show the changelog file in the github repository
+
+2.8.5
+Updated to bbl core 1.2.29
+
+2.8.4
+Fixed issue when mesh breaking in the strainer would cause a fakeplayer to be added every time
+
+2.8.3
+Fixed issue when mesh breaking in the strainer would cause a fakeplayer to be added every time
+
+2.8.2
+Fixed Tank loot table not applying the components to the item (data gen issue)
+
+2.8.1
+Tank can now be placed ontop of a fluid in world and store the fluid again
+Tank fluids now render on the bottom of the tank
+Tank loot table added back
+
+2.8.0
+Now depends on In World Recipes mod
+Remove hard coded item uses to create the eroding and purifying water, now uses in world recipes,
+    this means the recipes to create the water can be changed, these now show in JEI
+Removed specific mulch and salt item overrides for creating fluid blocks
+
+2.7.0
+Updated to Opolis Utilities 4.11.0
+Strainer now supports portable GUI
+Strainer now only put meshes in the correct mesh slot and other items in the input slot (This only effected automation with hoppers ect)
+Updated mod logo
+Trying a new way of saving block entity data on the item
+
+2.6.1
+
+Fixed Netherite Mesh not being in Creative or JEI menus
+
+2.6.0
+
+Updated to Opolis Utilities 4.8.0
+Improved JEI categories to support EMI and tweaked how mesh and output upgrades are shown
+Now automatically updating to curseforge and modrinth
+
+2.5.0
+
+Strainer GUI now hides upgrade icons when an item is in the slot
+Mesh and input slots now show names when hovered over
+Fixed grass block recipe using water instead of purifying water
+Ore pieces can now be used in a strainer to create nuggets/ gems of that resource, these recipe only exist if that resource is present in the world
+Output in recipes is now a SizedIngredient from this
+
+  "output": {
+    "count": 1,
+    "id": "minecraft:beetroot_seeds"
+  }
+
+  to this
+
+  "output": {
+    "count": 1,
+    "item": "minecraft:beetroot_seeds"
+  }
+  This allows for tags to be used in the output for recipes so instead of id use "item" or "tag"
+
+2.4.0
+
+Updated to latest opolis utilities and neo forge versions
+Fixed version name
+Fixed JEI tooltips not showing on newer versions of JEI
+re run data
+
+2.3.0
+
+Updated to latest opolis utilities and neo forge versions
+Moved to opolis utilities fluid registry, fluid names changed from "strainers:purified_water_fluid" to "strainers:purified_water"
+    same for eroding water, also fixed buckets not always making sounds when being placed or picket up
+Re run data to change recipes and blockstates
+Fixed log spam with strainer fluids not having blocksstates
+Fixed purifying buckets not having the correct names
+
+2.2.0
+
+Update to Opolis Utilities 4.1.4
+Update to Neoforge 21.0.30-beta
+Update to JEI (latest)
+Fixed rendering of the tank not showing fluids correctly
+Strainer Tanks will no longer fill in world if the fluid is not a source block
+Filled Strainer Tanks will now hold there fluid when broken
+Fixed breaking particle on the strainer
+
+
+2.1.0
+
+Fixed hoe on mulch recipe
+Fixed some missing recipes
+
+
+2.0.0
+
+Updated to minecraft 1.21
+Duration removed from the recipes (Duration now uses opolis utilities speed upgrades recipes instead)
+Output upgrades now effect the chance from an item not increasing the count of the output item
+
+STRAINER CHANGES
+    now has 3 slots for upgrades; one for speed, one for mesh damage and output chance
+    reduced output inventory slots
+
+Complete changed strainer recipe type
+Added new meshes, 4 per tier *(tin and bronze only exist if a mod with those metals is present)
+Added ore pieces for most ores, including modded common ores
+Remove all previous upgrades, some will come in the future
+
+PACK MAKERS
+speed upgrades can be added using the opolis utilities speed upgrade recipe type
+mesh upgrades can be added using the strainers mesh upgrade recipe type
+output upgrades can be added using the strainers output upgrade recipe type
+
+
+1.7.4
+
+Fixed sponge having a 0% chance in the strainer
+
+
+1.7.3
+
+Fixed crash on servers with renderer
+
+
+1.7.2
+
+Fixed recipes starting if theres a block ontop of the strainer
+
+1.7.1
+
+Fixed an issue where flowing fluids were returning a true boolean for the isMatchingBlock instead of returning false
+Flowing fluids no longer triggers ghost recipes in the strainers, this is the intended behavior
+Strainers now save there maxProgress correctly between world loads
+Now syncing progress between client and server
+Strainers will now show items being processed in world if the item is a block, other items will not be shown
+
+1.7.0
+
+Update to Opolis Utilities 2.10.4
+
+Added Strainer tank;
+     - Stores a single bucket of fluid
+     - Can be filled and drained by pipes
+     - Can be filled and drained by buckets
+     - Can be place ontop of strainers and filled with a fluid to use in the strainers recipes
+     - Can be placed ontop of fluids already in world to store that fluid in the tank
+     - Broken tank sets the fluid in world
+
+Changed wooden strainer texture no longer has a fixed mesh texture
+Strainer will now render the mesh inside the strainer, custom meshes just need a mesh texture as a base texture and the item will be rendered as the mesh
+FIXED various z fighting issues with the strainer
+Mesh information now renders correctly for custom meshes with durability and tier shown
+
+1.6.0
+
+KubeJS support for strainers
+
+ServerEvents.recipes(event => {
+
+    // Add a recipe to the strainer
+    // event.recipes.strainers.strainer (INPUT, OUTPUT, CHANCE, CHANCE_INCREASE_PER_TIER, DURATION, MESH TIER) .aboveBlock("minecraft:emerald_block") or .aboveFluid("minecraft:water") )
+
+    event.recipes.strainers.strainer("minecraft:emerald", "minecraft:gravel", 0.1, 0.11, 602, 5).aboveBlock("minecraft:emerald_block")
+    event.recipes.strainers.strainer("minecraft:diamond", "minecraft:dirt", 0.3, 0.2, 100, 2).aboveFluid("minecraft:water")
+
+    // Add a summoning recipe to the strainer
+    // event.recipes.strainers.summoning([INPUT, SPAWN EGG (for JEI)], SUMMONED_MOB) .blockBelow("minecraft:emerald_block") or .fluidBelow("minecraft:water")
+    event.recipes.strainers.summoning(["minecraft:diamond", "minecraft:squid_spawn_egg"], "minecraft:squid").fluidBelow("minecraft:water")
+    event.recipes.strainers.summoning(["minecraft:feather", "minecraft:bat_spawn_egg"], "minecraft:bat").blockBelow("minecraft:obsidian")
+
+})
+
+
+1.5.0
+
+Moved to Opolis Utilities 2.9.0, allows for any items to be used as upgrades highly configurable
+
+1.4.13
+
+Fixed translation message
+
+1.4.12
+
+Mesh tiers actually work now
+Output upgrades no longer double the output everytime, percentage values are now correct
+
+1.4.11
+
+Mesh upgrades now work correctly
+
+1.4.10
+
+Fixed fluids and block not being checked correctly with the summoning block
+
+1.4.9
+
+Fixed modded fluids not working with the summoning block
+Fixed input upgrades not working correctly (Input item never consumed when a input related upgrade was inserted)
+
+1.4.8
+
+Fixed Specialized Upgrades not being shown in JEI, fixed textures
+
+1.4.7
+
+Increased Mesh Durability's again
+Added green colored tooltips to positive upgrade effects and red to negative effects
+Enderman can now be spawned from the summoning block
+
+Duration upgrades
+    Now reduce 20% per level instead of 25% per level. Everlasting now 80% faster instead of changing the duration to 10 ticks
+Output upgrades
+    Now reduce 20% per level instead of 25% per level. Everlasting now 80% chance of additional output instead of 100%ticks
+Input upgrades
+    Now reduce 20% per level instead of 25% per level. Everlasting now 80% chance of not consuming input items instead of never consuming them (same chances to items that
+        use durability instead in there recipes
+Mesh upgrades
+    Now reduce 20% per level instead of 25% per level. Everlasting now 80% chance of not taking damage on meshes instead of never taking damage them
+
+All current upgrades are effected by these changes!
+
+Specialized Upgrades added basically each of the upgradable part of the strainers (durations, input, output and meshes) have there own specialized upgrade
+    Example: Mesh not taking any damage will increase duration by a amount. These have no recipes by default due to the high power level of the items!
+
+1.4.6
+
+Strainers now check North, South, East, West sides for output slots. This means that using pipes to extract from the side now works correctly
+this fixes Meshes being removed if you connected via the sides before
+Recipes that created a vanilla item such as leaves to dirt have been fixed to use the strainers id as there recipe id
+Added everlasting everything translation correctly
+
+1.4.5
+
+Updated to Opolis Utilities 2.4.0 and moved to slot handler and inventory handlers from here instead
+
+1.4.4
+
+Fixes to tag based recipes in the summoning block thanks @mangorage
+
+1.4.3
+
+Fixed summoning block recipes not showing on servers
+
+1.4.2
+
+Fixed crash with additional rolls
+Meshes now show there tier and max uses
+
+1.4.1
+
+Fixed the broken tag for pickaxes
+Changed durability of meshes (most increases)
+
+1.4.0
+
+Removed references to lighting water in the fluid class
+Added purified water
+Added a bunch of new recipes using water, lava, purifying water, eroding water and some blocks
+Any recipes for vanilla items that are not there let me know!
+Added Summoning Block, uses recipe jsons right click on the block with a block below to summon a entity
+
+```{
+     "type": "strainers:summoning",
+     "blockBelow": "minecraft:slime_block",
+     "ingredients": [
+       {
+         "item": "minecraft:slime_ball"
+       },
+       {
+          "item": "minecraft:slime_spawn_egg"
+       }
+     ],
+     "summonedMob": "minecraft:slime"
+   }```
+
+blockBelow also allows fluids such as ```"blockBelow": "minecraft:water"```
+first ingredient is the one used on the summoning altar to summon the mob
+second ingredient is the item (when clicked in JEI) to display the recipe im using spawn eggs
+
+1.3.10
+
+Fixed a issue with recipes having the same input and output but different fluids/blocks not working correctly and working with air
+Recipes that don't require a block or fluid and want air above use blockAbove: "minecraft:air"
+Fixed fluid names not being shown in JEI
+Removed Test Recipes
+
+1.3.9
+
+Added the tag "strainers:remove_item_no_damage_in_strainer", adding items to this tag means that even if they have a durability the item will be consumed instead of
+    taking damage
+
+1.3.8
+
+Added support for input items that have durability instead of removing the item it will damage the item instead once fully damaged the item will then be removed
+
+1.3.7
+
+Fixed duration upgrade tooltip
+
+1.3.6
+
+More recipes
+Fixed sturdy everything upgrade using improved upgrades
+Fixed typo
+Strainer can now be made from any mesh
+Increased total output slot from 9 to 24
+Recipes will now stop when all output slots are full regardless of stack size
+Recipes that that made a item that already contained a max stack in the output will now choose the next available slot to use
+
+1.3.5
+
+Added new textures for upgrades
+Fixed textures being incorrect for some upgrades
+Fixed recipes for upgrades
+Changed output upgrade recipes
+Added more recipes
+Fixed output upgrades doing nothing
+
+1.3.4
+
+Fixed server recipes
+
+1.3.3
+
+Fixed recipes using to many items and using to much durability in some recipes
+
+1.3.2
+
+new recipe system, fixed some in  world matching issues with same recipes input using different fluids
+
+1.3.0
+
+new recipe changes part 1
+
+1.2.1
+
+Changed recipe structure inside datapacks to make it clearer
+
+1.2.0
+
+Added upgrades (WIP Textures and recipes)
+Reworked how output work inside the block entity class
+
+1.1.5
+
+Added sugar cane to sand
+Added packed mud as a item to be sieved
+Added soul sand sieving recipe
+
+1.1.4
+s
+Fixed servers refusing clients
+Recipe format changed slightly
+
+  "ingredients": [
+    {
+      "tag": "strainers:tier_1_meshes"
+    },
+    {
+      "item": "minecraft:gravel"
+    }
+  ],
+
+ (   "mesh": [{
+      "tag": "strainers:tier_1_meshes"
+    }
+    ],
+    "inItem":[ {
+      "tag": "forge:cobblestone"
+    }
+    ],
+
+
+  the top piece of code replaces the bottom line of code in the JSONS
+
+1.1.3
+
+server fix part 1
+
+1.1.2
+
+Fixed crash on server start ups with strainers
+
+
+1.1.1
+
+Added strainer recipe
+Added new logo
+Slight recipe tweaks
+
+1.1.0
+
+Added 12 new meshes
+Added recipes for meshes
+Added eroding water
+Added smart logic to the strainers to be able to import on all sides all items
+Added smart logic to GUI
+Opolis Utilities now a dependency (need copper nuggets)
+Strainers now drop when broken with your hand
+Strainers input item now allow tags

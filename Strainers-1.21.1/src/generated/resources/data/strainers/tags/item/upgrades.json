@@ -1,0 +1,10 @@
+{
+  "values": [
+    "strainers:speed_upgrade_1",
+    "strainers:speed_upgrade_2",
+    "strainers:speed_upgrade_3",
+    "strainers:chance_upgrade_1",
+    "strainers:chance_upgrade_2",
+    "strainers:chance_upgrade_3"
+  ]
+}

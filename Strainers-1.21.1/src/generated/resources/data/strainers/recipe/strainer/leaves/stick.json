@@ -1,0 +1,107 @@
+{
+  "type": "strainers:strainer",
+  "above_block": {
+    "Name": "minecraft:water",
+    "Properties": {
+      "level": "0"
+    }
+  },
+  "input": {
+    "tag": "minecraft:leaves"
+  },
+  "results": [
+    {
+      "chance": 0.7,
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_1_meshes"
+      }
+    },
+    {
+      "chance": 0.8,
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_2_meshes"
+      }
+    },
+    {
+      "chance": 0.9,
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_3_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_4_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_5_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_6_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_7_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_8_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_9_meshes"
+      }
+    },
+    {
+      "item": {
+        "count": 1,
+        "id": "minecraft:stick"
+      },
+      "mesh": {
+        "tag": "strainers:tier_10_meshes"
+      }
+    }
+  ]
+}

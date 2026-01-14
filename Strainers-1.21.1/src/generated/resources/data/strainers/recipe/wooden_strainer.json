@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "strainers",
+  "key": {
+    "L": {
+      "tag": "minecraft:logs"
+    },
+    "M": {
+      "tag": "strainers:meshes"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "SMS",
+    "SMS",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "strainers:wooden_strainer"
+  }
+}

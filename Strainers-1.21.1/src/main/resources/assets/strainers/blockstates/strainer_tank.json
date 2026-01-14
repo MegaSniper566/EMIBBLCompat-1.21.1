@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "strainers:block/strainer_tank"
+    }
+  }
+}

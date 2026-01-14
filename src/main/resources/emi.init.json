@@ -1,0 +1,7 @@
+{
+  "entrypoints": {
+    "emi": [
+      "com.megasniper.emi.bblcompat.emi.EMIBBLPlugin"
+    ]
+  }
+}

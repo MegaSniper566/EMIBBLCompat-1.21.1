@@ -1,0 +1,5 @@
+{
+  "parent": "neoforge:item/bucket",
+  "fluid": "strainers:purifying_water",
+  "loader": "neoforge:fluid_container"
+}

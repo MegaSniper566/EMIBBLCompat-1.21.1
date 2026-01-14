@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "strainers",
+  "key": {
+    "B": {
+      "tag": "c:gems/lapis"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    }
+  },
+  "pattern": [
+    "SBS",
+    "BBB",
+    "SBS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "strainers:lapis_mesh"
+  }
+}

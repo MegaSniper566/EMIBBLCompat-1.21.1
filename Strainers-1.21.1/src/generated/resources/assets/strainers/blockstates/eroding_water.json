@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "strainers:block/eroding_water"
+    }
+  }
+}
