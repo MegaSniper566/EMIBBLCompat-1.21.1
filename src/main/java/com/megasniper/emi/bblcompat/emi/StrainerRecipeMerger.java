@@ -26,40 +26,30 @@ public class StrainerRecipeMerger {
                 @SuppressWarnings("unchecked")
                 List<Object> rollResults = (List<Object>) getRollResultsMethod.invoke(recipe);
                 
-                for (Object meshChanceResult : rollResults) {
-                    // Extract mesh and chanceResult from MeshChanceResult
-                    Method meshMethod = meshChanceResult.getClass().getMethod("mesh");
-                    Method chanceResultMethod = meshChanceResult.getClass().getMethod("chanceResult");
+                // Get first mesh from results for this recipe
+                if (!rollResults.isEmpty()) {
+                    Object firstMeshResult = rollResults.get(0);
+                    Method meshMethod = firstMeshResult.getClass().getMethod("mesh");
+                    Ingredient mesh = (Ingredient) meshMethod.invoke(firstMeshResult);
                     
-                    Ingredient mesh = (Ingredient) meshMethod.invoke(meshChanceResult);
-                    Object chanceResult = chanceResultMethod.invoke(meshChanceResult);
+                    // Collect all chance results from this recipe
+                    List<Object> chanceResults = new ArrayList<>();
+                    for (Object meshChanceResult : rollResults) {
+                        Method chanceResultMethod = meshChanceResult.getClass().getMethod("chanceResult");
+                        Object chanceResult = chanceResultMethod.invoke(meshChanceResult);
+                        chanceResults.add(chanceResult);
+                    }
                     
-                    // Create a stable key: input + blockAbove + mesh
-                    String key = input.toString() + "|" + 
-                                aboveBlock.toString() + "|" + 
-                                mesh.toString();
+                    // Create unique key per recipe (don't merge different recipes)
+                    String key = holder.id().toString();
                     
-                    merged.compute(key, (k, existing) -> {
-                        if (existing == null) {
-                            return new StrainerEmiRecipe(
-                                holder.id(),
-                                aboveBlock,
-                                input,
-                                mesh,
-                                List.of(chanceResult)
-                            );
-                        } else {
-                            List<Object> combined = new ArrayList<>(existing.getChanceResults());
-                            combined.add(chanceResult);
-                            return new StrainerEmiRecipe(
-                                existing.getId(),
-                                existing.getAboveBlock(),
-                                existing.getInput(),
-                                existing.getMesh(),
-                                combined
-                            );
-                        }
-                    });
+                    merged.put(key, new StrainerEmiRecipe(
+                        holder.id(),
+                        aboveBlock,
+                        input,
+                        mesh,
+                        chanceResults
+                    ));
                 }
             } catch (Exception e) {
                 // Log and continue if reflection fails
